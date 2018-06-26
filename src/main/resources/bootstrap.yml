@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: config-rms
+  rabbitmq:  #RabbitMQ配置
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+  cloud:
+    config:
+      uri: http://127.0.0.1:20001/
+      profile: dev
+      label: master
+    stream:
+      bindings:
+        testHelloInput:
+          destination: test #目的地，对应 MQ 是 exchange，生成临时队列
+        testOutput:
+          destination: input
+server:
+  port: 20003
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
+logging:
+  level:
+    com.mdl.rms: DEBUG
