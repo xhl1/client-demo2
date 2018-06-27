@@ -150,7 +150,7 @@ public class HttpUtil {
         return result;
     }
 
-    public static String sendPost(String url, int param) {
+    public static String sendPost(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
